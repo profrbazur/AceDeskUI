@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AceDesk Dashboard | PAGCOR</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1a212d", // Midnight Blue
+                        "accent": "#d4af37", // Gold Accent
+                        "background-light": "#f6f7f7",
+                        "background-dark": "#16181c",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .sidebar-active { background-color: rgba(212, 175, 55, 0.15); border-left: 4px solid #d4af37; color: #d4af37; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="flex h-screen overflow-hidden">
+<!-- Left Sidebar -->
+<aside class="w-64 bg-primary text-slate-300 flex flex-col shrink-0 border-r border-slate-800">
+<div class="p-6 flex items-center gap-3">
+<div class="size-10 bg-accent rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl font-bold">diamond</span>
+</div>
+<div>
+<h1 class="text-xl font-bold text-white tracking-tight">AceDesk</h1>
+<p class="text-[10px] uppercase tracking-widest text-accent font-semibold">PAGCOR Admin</p>
+</div>
+</div>
+<nav class="flex-1 px-4 py-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg sidebar-active transition-all group" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/5 transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-accent">badge</span>
+<span class="font-medium">Employees</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/5 transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-accent">confirmation_number</span>
+<span class="font-medium">Tickets</span>
+</a>
+<div class="pt-4 pb-2 px-4 text-[11px] uppercase tracking-widest text-slate-500 font-bold">System</div>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/5 transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-accent">settings</span>
+<span class="font-medium">System Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/5 transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-accent">admin_panel_settings</span>
+<span class="font-medium">Role Management</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/5 transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-accent">history</span>
+<span class="font-medium">User Logs</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-800">
+<div class="bg-slate-800/50 rounded-xl p-4">
+<p class="text-xs text-slate-400 mb-2">Storage Usage</p>
+<div class="w-full bg-slate-700 rounded-full h-1.5 mb-2">
+<div class="bg-accent h-1.5 rounded-full" style="width: 65%"></div>
+</div>
+<p class="text-[10px] text-slate-500 text-right">1.2GB / 2GB</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+<!-- Top Navbar -->
+<header class="h-16 bg-white dark:bg-background-dark border-b border-slate-200 dark:border-slate-800 px-8 flex items-center justify-between z-10">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-accent/50 text-sm" placeholder="Search for tickets, employees, or tasks..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+<span class="material-symbols-outlined">light_mode</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2.5 size-2 bg-red-500 rounded-full border-2 border-white dark:border-background-dark"></span>
+</button>
+</div>
+<div class="h-8 w-px bg-slate-200 dark:bg-slate-800"></div>
+<div class="flex items-center gap-3 cursor-pointer group">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-bold leading-none mb-1 group-hover:text-accent transition-colors">Admin User</p>
+<p class="text-[11px] text-slate-500 font-medium">Head Administrator</p>
+</div>
+<img class="size-10 rounded-full object-cover ring-2 ring-accent/20" data-alt="User profile photo of PAGCOR admin" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKVpqm1Brp7-sJIym6syMdlPEToSB56oHeO5CoGovJTvpJ_jY-VmXeg51q-zPEIdtYKnjBxc82dx9vTWplzSkx7l7PxEBFg2JOHVm9DPeKDnTgo2oa3s6vHBP_hRQTvmWJFaZbe6Mfb8AuoY7bYLPH_Oa4s33-6SYQG-KfhrWGMmIxwnL2S9F8yk9hJxSKASQGECqEzoD9krQJWMfP5NwbQPFvbNmlzsWFFPqSahauqlLYL79slz0fFWae_8SCwChsRO9OUh5zkdIm"/>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<main class="flex-1 overflow-y-auto p-8 space-y-8 bg-background-light dark:bg-background-dark">
+<!-- Header Section -->
+<div class="flex items-end justify-between">
+<div>
+<h2 class="text-2xl font-bold text-primary dark:text-white tracking-tight">System Overview</h2>
+<p class="text-slate-500 text-sm">Real-time status of PAGCOR technical operations.</p>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-semibold hover:bg-slate-800 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-accent text-lg">add</span>
+                        New Ticket
+                    </button>
+</div>
+<!-- Summary Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-blue-50 dark:bg-blue-900/20 text-blue-600 rounded-lg">
+<span class="material-symbols-outlined">bolt</span>
+</div>
+<span class="text-xs font-bold text-green-500 flex items-center gap-1 bg-green-50 px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-xs">trending_up</span> 12%
+                            </span>
+</div>
+<h3 class="text-slate-500 text-sm font-medium">Active Tickets</h3>
+<p class="text-3xl font-bold mt-1 text-primary dark:text-white">124</p>
+</div>
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-amber-50 dark:bg-amber-900/20 text-amber-600 rounded-lg">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<span class="text-xs font-bold text-amber-500 flex items-center gap-1 bg-amber-50 px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-xs">horizontal_rule</span> 0%
+                            </span>
+</div>
+<h3 class="text-slate-500 text-sm font-medium">Pending</h3>
+<p class="text-3xl font-bold mt-1 text-primary dark:text-white">45</p>
+</div>
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-accent/10 text-accent rounded-lg">
+<span class="material-symbols-outlined">assignment_ind</span>
+</div>
+<span class="text-xs font-bold text-green-500 flex items-center gap-1 bg-green-50 px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-xs">trending_up</span> 8%
+                            </span>
+</div>
+<h3 class="text-slate-500 text-sm font-medium">Assigned</h3>
+<p class="text-3xl font-bold mt-1 text-primary dark:text-white">89</p>
+</div>
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-red-200 dark:border-red-900/50 shadow-sm hover:shadow-md transition-shadow bg-red-50/10">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-red-50 dark:bg-red-900/20 text-red-600 rounded-lg">
+<span class="material-symbols-outlined">error</span>
+</div>
+<span class="text-xs font-bold text-red-500 flex items-center gap-1 bg-red-50 px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-xs">trending_up</span> 2%
+                            </span>
+</div>
+<h3 class="text-slate-500 text-sm font-medium">Critical</h3>
+<p class="text-3xl font-bold mt-1 text-red-600">12</p>
+</div>
+</div>
+<!-- Charts Section -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Status Pie Chart Style -->
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-bold text-lg text-primary dark:text-white">Tickets by Status</h3>
+<button class="material-symbols-outlined text-slate-400">more_horiz</button>
+</div>
+<div class="flex flex-col md:flex-row items-center gap-8 px-4">
+<div class="relative size-48">
+<svg class="size-full -rotate-90" viewbox="0 0 36 36">
+<circle class="stroke-slate-100 dark:stroke-slate-700" cx="18" cy="18" fill="none" r="16" stroke-width="3.5"></circle>
+<circle class="stroke-primary" cx="18" cy="18" fill="none" r="16" stroke-dasharray="40 100" stroke-linecap="round" stroke-width="4"></circle>
+<circle class="stroke-accent" cx="18" cy="18" fill="none" r="16" stroke-dasharray="25 100" stroke-dashoffset="-40" stroke-linecap="round" stroke-width="4"></circle>
+<circle class="stroke-blue-500" cx="18" cy="18" fill="none" r="16" stroke-dasharray="20 100" stroke-dashoffset="-65" stroke-linecap="round" stroke-width="4"></circle>
+<circle class="stroke-slate-400" cx="18" cy="18" fill="none" r="16" stroke-dasharray="15 100" stroke-dashoffset="-85" stroke-linecap="round" stroke-width="4"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-2xl font-bold">270</span>
+<span class="text-[10px] text-slate-500 uppercase">Total</span>
+</div>
+</div>
+<div class="flex-1 space-y-3 w-full">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2"><div class="size-2 rounded-full bg-primary"></div><span class="text-sm">Open</span></div>
+<span class="text-sm font-bold">40%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2"><div class="size-2 rounded-full bg-accent"></div><span class="text-sm">In Progress</span></div>
+<span class="text-sm font-bold">25%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2"><div class="size-2 rounded-full bg-blue-500"></div><span class="text-sm">Resolved</span></div>
+<span class="text-sm font-bold">20%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2"><div class="size-2 rounded-full bg-slate-400"></div><span class="text-sm">Closed</span></div>
+<span class="text-sm font-bold">15%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Department Bar Chart Style -->
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-bold text-lg text-primary dark:text-white">Tickets by Department</h3>
+<div class="flex gap-2">
+<span class="size-3 rounded-full bg-accent"></span>
+<span class="text-[10px] text-slate-500 font-bold uppercase">This Week</span>
+</div>
+</div>
+<div class="flex items-end justify-between h-48 px-2 gap-4">
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full bg-primary/10 rounded-t-lg relative flex items-end h-full">
+<div class="bg-primary w-full h-[85%] rounded-t-lg group-hover:bg-accent transition-colors"></div>
+</div>
+<span class="text-[11px] font-bold text-slate-500">IT</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full bg-primary/10 rounded-t-lg relative flex items-end h-full">
+<div class="bg-primary w-full h-[45%] rounded-t-lg group-hover:bg-accent transition-colors"></div>
+</div>
+<span class="text-[11px] font-bold text-slate-500">HR</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full bg-primary/10 rounded-t-lg relative flex items-end h-full">
+<div class="bg-primary w-full h-[65%] rounded-t-lg group-hover:bg-accent transition-colors"></div>
+</div>
+<span class="text-[11px] font-bold text-slate-500">FIN</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full bg-primary/10 rounded-t-lg relative flex items-end h-full">
+<div class="bg-primary w-full h-[95%] rounded-t-lg group-hover:bg-accent transition-colors"></div>
+</div>
+<span class="text-[11px] font-bold text-slate-500">OPS</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full bg-primary/10 rounded-t-lg relative flex items-end h-full">
+<div class="bg-primary w-full h-[30%] rounded-t-lg group-hover:bg-accent transition-colors"></div>
+</div>
+<span class="text-[11px] font-bold text-slate-500">SEC</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Tickets Table -->
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
+<div class="p-6 border-b border-slate-200 dark:border-slate-700 flex items-center justify-between">
+<h3 class="font-bold text-lg text-primary dark:text-white">Recent Tickets</h3>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 text-xs font-bold bg-slate-100 dark:bg-slate-700 rounded hover:bg-slate-200 transition-colors">Export CSV</button>
+<button class="px-3 py-1.5 text-xs font-bold text-accent bg-accent/10 rounded hover:bg-accent/20 transition-colors">View All</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-900/50">
+<th class="px-6 py-4 text-[11px] font-bold text-slate-500 uppercase tracking-wider">Ticket No</th>
+<th class="px-6 py-4 text-[11px] font-bold text-slate-500 uppercase tracking-wider">Title</th>
+<th class="px-6 py-4 text-[11px] font-bold text-slate-500 uppercase tracking-wider">Employee</th>
+<th class="px-6 py-4 text-[11px] font-bold text-slate-500 uppercase tracking-wider">Department</th>
+<th class="px-6 py-4 text-[11px] font-bold text-slate-500 uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 text-[11px] font-bold text-slate-500 uppercase tracking-wider">Priority</th>
+<th class="px-6 py-4 text-[11px] font-bold text-slate-500 uppercase tracking-wider">Date</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-700">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4 text-sm font-bold text-primary dark:text-white">#T-2045</td>
+<td class="px-6 py-4 text-sm">Server connectivity issues in Main Floor</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-accent/20 flex items-center justify-center text-[10px] font-bold text-accent">JR</div>
+<span class="text-sm">John Reyes</span>
+</div>
+</td>
+<td class="px-6 py-4"><span class="text-xs px-2 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-600 rounded font-semibold">IT Support</span></td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">
+<span class="size-1.5 rounded-full bg-amber-500"></span> In Progress
+                                        </span>
+</td>
+<td class="px-6 py-4 text-sm font-bold text-red-500 uppercase">High</td>
+<td class="px-6 py-4 text-sm text-slate-500">Oct 24, 2023</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4 text-sm font-bold text-primary dark:text-white">#T-2044</td>
+<td class="px-6 py-4 text-sm">Payroll access for Q3 new hires</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-blue-500/20 flex items-center justify-center text-[10px] font-bold text-blue-500">MS</div>
+<span class="text-sm">Maria Santos</span>
+</div>
+</td>
+<td class="px-6 py-4"><span class="text-xs px-2 py-1 bg-purple-50 dark:bg-purple-900/20 text-purple-600 rounded font-semibold">HR Admin</span></td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+<span class="size-1.5 rounded-full bg-green-500"></span> Resolved
+                                        </span>
+</td>
+<td class="px-6 py-4 text-sm font-bold text-slate-400 uppercase">Medium</td>
+<td class="px-6 py-4 text-sm text-slate-500">Oct 23, 2023</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4 text-sm font-bold text-primary dark:text-white">#T-2043</td>
+<td class="px-6 py-4 text-sm">CCTV blind spot in Section 4A</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-slate-500/20 flex items-center justify-center text-[10px] font-bold text-slate-500">AC</div>
+<span class="text-sm">Antonio Cruz</span>
+</div>
+</td>
+<td class="px-6 py-4"><span class="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded font-semibold">Security</span></td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">
+<span class="size-1.5 rounded-full bg-blue-500"></span> Open
+                                        </span>
+</td>
+<td class="px-6 py-4 text-sm font-bold text-red-700 uppercase">Critical</td>
+<td class="px-6 py-4 text-sm text-slate-500">Oct 23, 2023</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4 text-sm font-bold text-primary dark:text-white">#T-2042</td>
+<td class="px-6 py-4 text-sm">Licensing portal API timeout</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-orange-500/20 flex items-center justify-center text-[10px] font-bold text-orange-500">RL</div>
+<span class="text-sm">Rina Lopez</span>
+</div>
+</td>
+<td class="px-6 py-4"><span class="text-xs px-2 py-1 bg-orange-50 dark:bg-orange-900/20 text-orange-600 rounded font-semibold">Finance</span></td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300">
+<span class="size-1.5 rounded-full bg-slate-400"></span> Closed
+                                        </span>
+</td>
+<td class="px-6 py-4 text-sm font-bold text-slate-300 uppercase tracking-tighter">Low</td>
+<td class="px-6 py-4 text-sm text-slate-500">Oct 22, 2023</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-6 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest">
+<span>Showing 4 of 270 entries</span>
+<div class="flex gap-2">
+<button class="px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded hover:bg-slate-200 cursor-not-allowed opacity-50"><span class="material-symbols-outlined text-sm align-middle">chevron_left</span> Previous</button>
+<button class="px-3 py-1 bg-primary text-white rounded hover:bg-slate-800">Next <span class="material-symbols-outlined text-sm align-middle">chevron_right</span></button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

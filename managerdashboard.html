@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AceDesk - Manager Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1e293b", // Midnight blue derived
+                        "accent": "#eab308",  // Gold accent
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display transition-colors duration-200">
+<div class="flex h-screen overflow-hidden">
+<!-- Side Bar -->
+<aside class="w-64 flex-shrink-0 bg-primary dark:bg-slate-950 text-slate-300 flex flex-col border-r border-slate-700/50">
+<div class="p-6 flex items-center gap-3 border-b border-slate-700/50">
+<div class="size-10 rounded-lg bg-accent flex items-center justify-center text-primary font-bold text-xl shadow-lg">
+<span class="material-symbols-outlined">confirmation_number</span>
+</div>
+<div>
+<h1 class="text-white text-lg font-bold leading-none">AceDesk</h1>
+<p class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-semibold">PAGCOR Ticketing</p>
+</div>
+</div>
+<nav class="flex-1 overflow-y-auto p-4 space-y-1 scrollbar-hide">
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-accent text-primary font-semibold shadow-sm cursor-pointer">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm">Dashboard</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-800 hover:text-white transition-all cursor-pointer">
+<span class="material-symbols-outlined">confirmation_number</span>
+<span class="text-sm">All Tickets</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-800 hover:text-white transition-all cursor-pointer">
+<span class="material-symbols-outlined">badge</span>
+<span class="text-sm">Employees</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-800 hover:text-white transition-all cursor-pointer">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm">System Settings</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-800 hover:text-white transition-all cursor-pointer">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="text-sm">Reports</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-800 hover:text-white transition-all cursor-pointer">
+<span class="material-symbols-outlined">history</span>
+<span class="text-sm">User Logs</span>
+</div>
+</nav>
+<div class="p-4 border-t border-slate-700/50">
+<div class="flex items-center gap-3 px-3 py-3 rounded-xl bg-slate-800/50 border border-slate-700/50">
+<div class="size-8 rounded-full bg-slate-600 flex items-center justify-center overflow-hidden">
+<img alt="Avatar" data-alt="Manager profile avatar photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_3dJykvYK5eYkPmJuY7FwE10Bo3xWXZHVBO47DbnsWRV6xsCs9m4zYTJrDSO8to8SE69KmkHOOS8U6dqd8FBjiTEmlLKQs-F3XRwOgqkd_obXkzzHn03dq40HPm8HhaKaJA9BOcAI3x1h6uCmsEWuWAABFKg-QRiqggcXg7em2DEzb2lA_LCr8VU_IKdRfYs2YpSNjKIrURVv3ZW_2e1BeN9QGmepXCkUQVJsAhwIRUR69R69VjZ30tytMMfX8gHBJjYZK576zIMM"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-bold text-white truncate">Robert Chen</p>
+<p class="text-[10px] text-slate-400 uppercase truncate">Operations Manager</p>
+</div>
+<span class="material-symbols-outlined text-sm cursor-pointer hover:text-white">logout</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-hidden relative">
+<!-- Header -->
+<header class="h-16 flex items-center justify-between px-8 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 z-10">
+<div class="flex items-center flex-1 max-w-lg">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-xl pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-accent transition-all dark:text-slate-200" placeholder="Search tickets, employees or logs..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="size-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2.5 right-2.5 size-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-800"></span>
+</button>
+<button class="size-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="h-8 w-[1px] bg-slate-200 dark:bg-slate-800 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-bold leading-none">Robert Chen</p>
+<p class="text-[11px] text-slate-500 font-medium">Operations Manager</p>
+</div>
+<div class="size-10 rounded-xl bg-accent p-0.5 shadow-sm">
+<img alt="Avatar" class="rounded-[10px]" data-alt="Manager headshot avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBI9a4EyUsj3PsQ5owrzXjSNIcDI2judnXRyT7RbAoGZww4Y0dI5ZC2GKVdwF-XQ6ZZ9xuptogWY-2y6bK6hX4LetwR8ZFnsqh0mKJkpYyinpwBv7o9DXR9tm0GDPXrYLR66KRoiuV-L_Vnmur-VgOEHk7imOYRggy-CUJfLDZApiZvrGeTJBl0BYVhbbV0CbN5Aug-agpO4eNlnacPMnnH7CD9HOi2unr4uE0Ye1zZskQ3yahZHnxEb4AjiGagH5njyj8ORQlYoDQT"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-8 space-y-8 bg-background-light dark:bg-background-dark">
+<!-- Page Title -->
+<div class="flex justify-between items-end">
+<div>
+<h2 class="text-3xl font-extrabold text-primary dark:text-white tracking-tight">Manager Dashboard</h2>
+<p class="text-slate-500 dark:text-slate-400 mt-1 font-medium">Oversee ticket operations, assignments, and team performance</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-bold hover:shadow-md transition-all">
+<span class="material-symbols-outlined text-lg">download</span> Export Report
+                        </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary dark:bg-accent text-white dark:text-primary rounded-xl text-sm font-bold shadow-lg hover:shadow-primary/20 transition-all">
+<span class="material-symbols-outlined text-lg">add</span> Create Ticket
+                        </button>
+</div>
+</div>
+<!-- Summary Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start">
+<div class="size-12 rounded-xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600">
+<span class="material-symbols-outlined">drafts</span>
+</div>
+<span class="text-xs font-bold text-green-500 bg-green-50 dark:bg-green-900/20 px-2 py-1 rounded-full">+12%</span>
+</div>
+<div class="mt-4">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-wider">Total Open Tickets</p>
+<h3 class="text-3xl font-black mt-1">142</h3>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start">
+<div class="size-12 rounded-xl bg-orange-50 dark:bg-orange-900/20 flex items-center justify-center text-orange-600">
+<span class="material-symbols-outlined">inbox</span>
+</div>
+<span class="text-xs font-bold text-slate-400 bg-slate-50 dark:bg-slate-800 px-2 py-1 rounded-full">New</span>
+</div>
+<div class="mt-4">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-wider">New Requests</p>
+<h3 class="text-3xl font-black mt-1">28</h3>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start">
+<div class="size-12 rounded-xl bg-red-50 dark:bg-red-900/20 flex items-center justify-center text-red-600">
+<span class="material-symbols-outlined">priority_high</span>
+</div>
+<span class="text-xs font-bold text-red-500 bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded-full">+5%</span>
+</div>
+<div class="mt-4">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-wider">Escalated Tickets</p>
+<h3 class="text-3xl font-black mt-1">12</h3>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start">
+<div class="size-12 rounded-xl bg-green-50 dark:bg-green-900/20 flex items-center justify-center text-green-600">
+<span class="material-symbols-outlined">task_alt</span>
+</div>
+<span class="text-xs font-bold text-green-600 bg-green-50 dark:bg-green-900/20 px-2 py-1 rounded-full">Today</span>
+</div>
+<div class="mt-4">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-wider">Resolved Today</p>
+<h3 class="text-3xl font-black mt-1">45</h3>
+</div>
+</div>
+</div>
+<!-- Charts Section -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<h4 class="text-lg font-bold">Tickets by Status</h4>
+<select class="bg-slate-50 dark:bg-slate-800 border-none text-xs font-bold rounded-lg py-1 px-3 focus:ring-accent">
+<option>Weekly</option>
+<option>Monthly</option>
+</select>
+</div>
+<div class="h-64 flex items-end justify-around gap-4 px-4">
+<!-- Chart Bars Placeholder -->
+<div class="flex flex-col items-center flex-1">
+<div class="w-full bg-blue-500/20 dark:bg-blue-500/10 rounded-t-lg relative" style="height: 60%">
+<div class="absolute inset-x-0 bottom-0 bg-blue-500 rounded-t-lg h-[80%]"></div>
+</div>
+<span class="text-[10px] mt-2 font-bold text-slate-400 uppercase">Open</span>
+</div>
+<div class="flex flex-col items-center flex-1">
+<div class="w-full bg-accent/20 dark:bg-accent/10 rounded-t-lg relative" style="height: 40%">
+<div class="absolute inset-x-0 bottom-0 bg-accent rounded-t-lg h-[60%]"></div>
+</div>
+<span class="text-[10px] mt-2 font-bold text-slate-400 uppercase">Pending</span>
+</div>
+<div class="flex flex-col items-center flex-1">
+<div class="w-full bg-green-500/20 dark:bg-green-500/10 rounded-t-lg relative" style="height: 90%">
+<div class="absolute inset-x-0 bottom-0 bg-green-500 rounded-t-lg h-[95%]"></div>
+</div>
+<span class="text-[10px] mt-2 font-bold text-slate-400 uppercase">Closed</span>
+</div>
+<div class="flex flex-col items-center flex-1">
+<div class="w-full bg-red-500/20 dark:bg-red-500/10 rounded-t-lg relative" style="height: 30%">
+<div class="absolute inset-x-0 bottom-0 bg-red-500 rounded-t-lg h-[40%]"></div>
+</div>
+<span class="text-[10px] mt-2 font-bold text-slate-400 uppercase">Escalated</span>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<h4 class="text-lg font-bold">Tickets by Dept/Division</h4>
+<span class="text-xs text-slate-400">Total volume</span>
+</div>
+<div class="h-64 flex flex-col justify-center space-y-4">
+<!-- Horizontal Progress Bars Placeholder -->
+<div class="space-y-1">
+<div class="flex justify-between text-xs font-bold uppercase tracking-wider text-slate-500">
+<span>Information Technology</span>
+<span>70%</span>
+</div>
+<div class="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary dark:bg-accent rounded-full" style="width: 70%"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-xs font-bold uppercase tracking-wider text-slate-500">
+<span>Human Resources</span>
+<span>45%</span>
+</div>
+<div class="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary dark:bg-accent rounded-full" style="width: 45%"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-xs font-bold uppercase tracking-wider text-slate-500">
+<span>Finance &amp; Treasury</span>
+<span>30%</span>
+</div>
+<div class="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary dark:bg-accent rounded-full" style="width: 30%"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-xs font-bold uppercase tracking-wider text-slate-500">
+<span>Operations Support</span>
+<span>85%</span>
+</div>
+<div class="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary dark:bg-accent rounded-full" style="width: 85%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Table Section -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="p-6 flex flex-wrap justify-between items-center gap-4">
+<h4 class="text-lg font-bold">Ticket Assignment Oversight</h4>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200">Filter</button>
+<button class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200">Sorted by Date</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50 dark:bg-slate-800/50 border-y border-slate-200 dark:border-slate-800">
+<tr>
+<th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500">Ticket No</th>
+<th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500">Created</th>
+<th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500">Requested By</th>
+<th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500">Category</th>
+<th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500">Priority</th>
+<th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500">Assigned To</th>
+<th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500">Status</th>
+<th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-all group">
+<td class="px-6 py-4 text-sm font-bold text-primary dark:text-accent">#TCK-9421</td>
+<td class="px-6 py-4 text-xs font-medium text-slate-500">Oct 24, 09:12 AM</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-primary/10 text-[10px] flex items-center justify-center font-bold">AL</div>
+<span class="text-xs font-bold">Arvin Lim</span>
+</div>
+</td>
+<td class="px-6 py-4 text-xs">Technical / Hardware</td>
+<td class="px-6 py-4">
+<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-red-100 text-red-600 uppercase">High</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-slate-200">
+<img alt="Staff" class="rounded-full" data-alt="Staff member profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAY0hAhXfk3-sMivTz497gmEDrvzRtVUOtip9IPa14CciiNvebJIBMFsVcsvCPZz8I_TW79Wz645GHgYgWm7DtWbDSagoBTAc8Ex3G-TEa0S354Wi6Rg00LxDfpLUnZRJSpHfGpRRI0iPQR6Sx2QZX__WicWbC9h5YaezIjLhrOvqXBwORNoopIucSzcMiI2wrBfmgD23WCMRiALzWOeCsnzg9gbF_CU9uGk55ioqYfr3rC6d3Xe0fAyjsp6p8aHG7ALJkhE3fRHM1"/>
+</div>
+<span class="text-xs font-medium">Marco Rossi</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5">
+<div class="size-1.5 rounded-full bg-blue-500"></div>
+<span class="text-xs font-bold text-blue-600">In Progress</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="size-8 rounded-lg flex items-center justify-center hover:bg-white dark:hover:bg-slate-700 shadow-sm border border-transparent hover:border-slate-200 dark:hover:border-slate-600 text-slate-400 hover:text-primary">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="size-8 rounded-lg flex items-center justify-center hover:bg-white dark:hover:bg-slate-700 shadow-sm border border-transparent hover:border-slate-200 dark:hover:border-slate-600 text-slate-400 hover:text-accent">
+<span class="material-symbols-outlined text-[18px]">swap_horiz</span>
+</button>
+<button class="size-8 rounded-lg flex items-center justify-center hover:bg-white dark:hover:bg-slate-700 shadow-sm border border-transparent hover:border-slate-200 dark:hover:border-slate-600 text-slate-400 hover:text-primary">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-all group">
+<td class="px-6 py-4 text-sm font-bold text-primary dark:text-accent">#TCK-9425</td>
+<td class="px-6 py-4 text-xs font-medium text-slate-500">Oct 24, 10:45 AM</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-primary/10 text-[10px] flex items-center justify-center font-bold">SD</div>
+<span class="text-xs font-bold">S. Dela Cruz</span>
+</div>
+</td>
+<td class="px-6 py-4 text-xs">Access / Login</td>
+<td class="px-6 py-4">
+<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-orange-100 text-orange-600 uppercase">Medium</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs text-slate-400 font-medium italic">Unassigned</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5">
+<div class="size-1.5 rounded-full bg-slate-400"></div>
+<span class="text-xs font-bold text-slate-500">New</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right text-slate-400">
+<div class="flex justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="size-8 rounded-lg flex items-center justify-center hover:bg-white shadow-sm border border-transparent hover:border-slate-200"><span class="material-symbols-outlined text-[18px]">visibility</span></button>
+<button class="size-8 rounded-lg flex items-center justify-center hover:bg-white shadow-sm border border-transparent hover:border-slate-200"><span class="material-symbols-outlined text-[18px]">person_add</span></button>
+<button class="size-8 rounded-lg flex items-center justify-center hover:bg-white shadow-sm border border-transparent hover:border-slate-200"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Drawer (Modal Layer) - Hidden by default but structure included -->
+<div class="absolute inset-0 z-50 flex justify-end pointer-events-none overflow-hidden">
+<!-- Overlay -->
+<div class="absolute inset-0 bg-slate-950/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"></div>
+<!-- Ticket Detail Drawer (Visualizing for Design) -->
+<div class="w-full max-w-lg bg-white dark:bg-slate-900 h-full shadow-2xl translate-x-full transition-transform duration-300 pointer-events-auto border-l border-slate-200 dark:border-slate-800 flex flex-col">
+<div class="p-6 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center bg-slate-50 dark:bg-slate-900/50">
+<div>
+<p class="text-[10px] font-black uppercase text-slate-400 tracking-widest">Ticket Details</p>
+<h3 class="text-xl font-black text-primary dark:text-white">#TCK-9421</h3>
+</div>
+<button class="size-8 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center text-slate-500">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-6 space-y-8">
+<!-- Main Info -->
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<span class="px-3 py-1 bg-red-100 text-red-600 text-xs font-black uppercase rounded-full">High Priority</span>
+<span class="px-3 py-1 bg-blue-100 text-blue-600 text-xs font-black uppercase rounded-full">In Progress</span>
+</div>
+<h4 class="text-lg font-bold leading-tight">Terminal login issue at Solaire Entertainment hub main floor.</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400">User reports intermittent "Authentication Failed" error while trying to sync with central database. Happens mostly during peak hours.</p>
+</div>
+<!-- Activity Timeline -->
+<div class="space-y-4">
+<h5 class="text-xs font-black uppercase text-slate-400 tracking-widest">Activity Timeline</h5>
+<div class="space-y-6 relative before:content-[''] before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-slate-100 dark:before:bg-slate-800">
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 size-[24px] bg-accent rounded-full border-4 border-white dark:border-slate-900"></div>
+<p class="text-sm font-bold">Ticket Reassigned</p>
+<p class="text-xs text-slate-500">Manager (Robert Chen) assigned to Marco Rossi</p>
+<p class="text-[10px] text-slate-400 mt-1 uppercase font-semibold">Today, 11:20 AM</p>
+</div>
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 size-[24px] bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-white dark:border-slate-900"></div>
+<p class="text-sm font-bold">Status Changed to 'In Progress'</p>
+<p class="text-xs text-slate-500">System automatic status update</p>
+<p class="text-[10px] text-slate-400 mt-1 uppercase font-semibold">Today, 10:15 AM</p>
+</div>
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 size-[24px] bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-white dark:border-slate-900"></div>
+<p class="text-sm font-bold">Ticket Created</p>
+<p class="text-xs text-slate-500">Created via Employee Portal by Arvin Lim</p>
+<p class="text-[10px] text-slate-400 mt-1 uppercase font-semibold">Today, 09:12 AM</p>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 border-t border-slate-100 dark:border-slate-800 flex gap-3">
+<button class="flex-1 py-2.5 bg-primary dark:bg-accent text-white dark:text-primary font-bold rounded-xl shadow-lg">Update Ticket</button>
+<button class="px-4 py-2.5 border border-slate-200 dark:border-slate-700 rounded-xl font-bold">Reassign</button>
+</div>
+</div>
+</div>
+<!-- Reassign Ticket Modal (Overlay Concept) - Structure included -->
+<div class="fixed inset-0 z-[60] flex items-center justify-center p-4 opacity-0 pointer-events-none">
+<div class="absolute inset-0 bg-slate-950/60 backdrop-blur-md"></div>
+<div class="relative w-full max-w-md bg-white dark:bg-slate-900 rounded-3xl shadow-2xl overflow-hidden animate-modal-enter border border-slate-200 dark:border-slate-800">
+<div class="p-6 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
+<h4 class="text-xl font-black">Reassign Ticket</h4>
+<button class="size-8 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center"><span class="material-symbols-outlined">close</span></button>
+</div>
+<div class="p-6 space-y-4">
+<div class="space-y-1.5">
+<label class="text-xs font-black uppercase text-slate-400">Select Staff Member</label>
+<div class="grid grid-cols-1 gap-2">
+<button class="flex items-center gap-3 p-3 rounded-xl border-2 border-accent bg-accent/5 transition-all text-left">
+<img alt="Avatar" class="size-8 rounded-full" data-alt="Staff profile photo for selection" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZaM_3Y44jFj9lfYLct0FL4gNHCe2PbCFvijPAsnrybDlopaI6gApoEu-CZV65atZ-vKEWaIfWYxRPWYKp4fUxZBI9GZ2EfLAtIqkggWRVvkwUkmenRS60bv2XNknfyLKBT5G8cSex_kbfAZdKMEnKdJRcB4CelS-zNz1oVultQ9kIn65339UgVLcR0kZwreJyZg5dP8bjDsWDBoGZipN7fFs7f434kQMuIPVFYksgt3IMOanoucF8RiBeTf5HlbSGZwqHFA0RBQrz"/>
+<div class="flex-1">
+<p class="text-sm font-bold">Sarah Jenkins</p>
+<p class="text-[10px] text-slate-500">Technical Support (3 Open Tickets)</p>
+</div>
+<span class="material-symbols-outlined text-accent">check_circle</span>
+</button>
+<button class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-slate-300 transition-all text-left">
+<img alt="Avatar" class="size-8 rounded-full" data-alt="Staff profile photo for selection" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBB8tJlAlVk8DGjUo8uq9y8yhRV-6oUdIJz3GhUWGMyoJmsrJ_6TpmsyRMMdHz33_IG-ntqMNCo-l5LL02M_KIGIrLCsOFXPxiEMmKp5K0kj1K6tyRaFXQ5gjCnfFKSczRn6RyNqYzdaqHZLot02bEYKCgyOCh1w4SSkqXgWQI_tbPvDQqvJyvF1WlGdYcvPxRTaST6vg8DWGZxbN4RM2CVBN4Jm3qDLHJm6cGFXuBUz7HBfNCNzM9NBQUEu8YAfent3T0zbBeF3PSl"/>
+<div class="flex-1">
+<p class="text-sm font-bold">David Wong</p>
+<p class="text-[10px] text-slate-500">Software Specialist (5 Open Tickets)</p>
+</div>
+</button>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-black uppercase text-slate-400">Assignment Note</label>
+<textarea class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-xl text-sm p-3 focus:ring-accent" placeholder="Add instructions for the new assignee..." rows="3"></textarea>
+</div>
+</div>
+<div class="p-6 bg-slate-50 dark:bg-slate-800/50 flex gap-3">
+<button class="flex-1 py-3 bg-primary dark:bg-accent text-white dark:text-primary font-bold rounded-2xl shadow-lg">Confirm Assignment</button>
+<button class="px-6 py-3 font-bold text-slate-500 hover:text-primary">Cancel</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AceDesk | PAGCOR Internal Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#1a212d",
+                "accent-gold": "#d4af37",
+                "background-light": "#f6f7f7",
+                "background-dark": "#16181c",
+              },
+              fontFamily: {
+                "display": ["Inter", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex">
+<!-- Fixed Sidebar -->
+<aside class="fixed inset-y-0 left-0 w-64 bg-primary text-white border-r border-primary/20 z-50">
+<div class="flex flex-col h-full p-6">
+<!-- Brand Logo -->
+<div class="flex items-center gap-3 mb-10 px-2">
+<div class="size-10 bg-accent-gold rounded-lg flex items-center justify-center text-primary font-black text-xl">A</div>
+<div class="flex flex-col">
+<h1 class="text-lg font-bold leading-none tracking-tight">AceDesk</h1>
+<span class="text-xs text-slate-400 font-medium uppercase tracking-widest">PAGCOR Internal</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/10 text-white font-semibold transition-all" href="#">
+<span class="material-symbols-outlined text-accent-gold">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">confirmation_number</span>
+<span>My Tickets</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">person</span>
+<span>Profile</span>
+</a>
+<div class="pt-4 mt-4 border-t border-white/5">
+<p class="px-4 text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] mb-2">Systems</p>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</div>
+</nav>
+<!-- Bottom Section -->
+<div class="mt-auto">
+<div class="p-4 bg-white/5 rounded-xl flex items-center gap-3">
+<div class="size-10 rounded-full border-2 border-accent-gold overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Employee profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgKnmw2z1kwvAeT-JGYIALj3LOECoGpqRn5DafinAAVXf7gPY5jb6_Gcz1AtMGQM33us0GlDULawuEg0D84-nsdD33K77LZOfHmrE8s9AoCS8f3S0eoOdFGcfAlzkELtIGa56endQ9p2FL4AgW0TWrfzmtn7FGY7C_BvVLXv5vzh3XLqv4_oDUhAySJbyfTKNDXodeTc2rdxivzOv7cnJqEXj7tkGgjCMRO6hA51T1E87gRlkn9KAyUNlR7E9Oa0p5HENRS5NAWFS3"/>
+</div>
+<div class="flex flex-col overflow-hidden">
+<p class="text-sm font-bold truncate">Julian Reyes</p>
+<p class="text-[10px] text-slate-400 truncate">IT Division</p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 flex-1 flex flex-col">
+<!-- Header -->
+<header class="sticky top-0 z-40 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-8 py-4 flex items-center justify-between">
+<div class="relative w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg focus:ring-2 focus:ring-accent-gold/50 focus:border-accent-gold outline-none transition-all text-sm" placeholder="Search tickets, departments, or staff..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="size-10 flex items-center justify-center rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-background-light"></span>
+</button>
+<div class="h-6 w-[1px] bg-slate-200 dark:border-slate-800"></div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<p class="text-xs font-bold leading-none">PAGCOR Office</p>
+<p class="text-[10px] text-slate-500">Manila, PH</p>
+</div>
+<div class="size-10 bg-primary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">apps</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="p-8 max-w-7xl mx-auto w-full space-y-8">
+<!-- Page Title & Action -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h2 class="text-3xl font-black text-primary dark:text-slate-100 tracking-tight">Dashboard</h2>
+<p class="text-slate-500 dark:text-slate-400 mt-1">Create and monitor your service requests across all departments.</p>
+</div>
+<button class="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-xl font-bold hover:shadow-lg hover:shadow-primary/20 transition-all active:scale-95 group">
+<span class="material-symbols-outlined group-hover:rotate-90 transition-transform">add</span>
+<span>Create Ticket</span>
+</button>
+</div>
+<!-- Summary Statistics -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- New Tickets -->
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 flex flex-col gap-1">
+<div class="flex items-center justify-between mb-2">
+<div class="size-10 bg-blue-50 dark:bg-blue-900/20 text-blue-600 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined">fiber_new</span>
+</div>
+<span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded">Update</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">New Tickets</p>
+<p class="text-3xl font-black text-primary dark:text-white">12</p>
+</div>
+<!-- In Progress -->
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 flex flex-col gap-1">
+<div class="flex items-center justify-between mb-2">
+<div class="size-10 bg-amber-50 dark:bg-amber-900/20 text-amber-600 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined">pending_actions</span>
+</div>
+<span class="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-1 rounded">+3 today</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">In Progress</p>
+<p class="text-3xl font-black text-primary dark:text-white">8</p>
+</div>
+<!-- Resolved -->
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 flex flex-col gap-1">
+<div class="flex items-center justify-between mb-2">
+<div class="size-10 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined">task_alt</span>
+</div>
+<span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded">85% rate</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Resolved</p>
+<p class="text-3xl font-black text-primary dark:text-white">45</p>
+</div>
+<!-- Escalated -->
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 flex flex-col gap-1">
+<div class="flex items-center justify-between mb-2">
+<div class="size-10 bg-rose-50 dark:bg-rose-900/20 text-rose-600 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined">priority_high</span>
+</div>
+<span class="text-xs font-bold text-rose-600 bg-rose-50 px-2 py-1 rounded">Action Required</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Escalated</p>
+<p class="text-3xl font-black text-primary dark:text-white">2</p>
+</div>
+</div>
+<!-- Recent Tickets Table -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 overflow-hidden">
+<div class="px-6 py-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+<h3 class="text-lg font-bold text-primary dark:text-white">My Recent Tickets</h3>
+<button class="text-sm font-semibold text-primary/60 dark:text-slate-400 hover:text-accent-gold transition-colors">View All Tickets</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50">
+<th class="px-6 py-4 text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Ticket No</th>
+<th class="px-6 py-4 text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Concern Category</th>
+<th class="px-6 py-4 text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Priority</th>
+<th class="px-6 py-4 text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Assigned Dept.</th>
+<th class="px-6 py-4 text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Status</th>
+<th class="px-6 py-4 text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Date Created</th>
+<th class="px-6 py-4 text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 text-center">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 font-mono text-sm font-bold text-primary dark:text-slate-300">#TK-49202</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-slate-900 dark:text-slate-200">Hardware Repair</span>
+<span class="text-[11px] text-slate-500">Monitor flickering</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-700">
+<span class="size-1.5 rounded-full bg-rose-700"></span> High
+                                    </span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">ICT Department</span>
+<span class="text-[11px] text-slate-500">Hardware Division</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-bold bg-amber-100 text-amber-700">In Progress</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">Oct 24, 2023</td>
+<td class="px-6 py-4 text-center">
+<button class="size-8 rounded-lg hover:bg-primary/5 text-primary dark:text-accent-gold transition-all inline-flex items-center justify-center">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 font-mono text-sm font-bold text-primary dark:text-slate-300">#TK-49195</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-slate-900 dark:text-slate-200">System Access</span>
+<span class="text-[11px] text-slate-500">Reset VPN Credentials</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700">
+<span class="size-1.5 rounded-full bg-slate-700"></span> Medium
+                                    </span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">ICT Department</span>
+<span class="text-[11px] text-slate-500">Security Division</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-bold bg-emerald-100 text-emerald-700">Resolved</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">Oct 22, 2023</td>
+<td class="px-6 py-4 text-center">
+<button class="size-8 rounded-lg hover:bg-primary/5 text-primary dark:text-accent-gold transition-all inline-flex items-center justify-center">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 font-mono text-sm font-bold text-primary dark:text-slate-300">#TK-49188</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-slate-900 dark:text-slate-200">Legal Review</span>
+<span class="text-[11px] text-slate-500">Contract #2023-A</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-700">
+<span class="size-1.5 rounded-full bg-rose-700"></span> High
+                                    </span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Legal Affairs</span>
+<span class="text-[11px] text-slate-500">Corporate Div</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-bold bg-blue-100 text-blue-700">New</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">Oct 21, 2023</td>
+<td class="px-6 py-4 text-center">
+<button class="size-8 rounded-lg hover:bg-primary/5 text-primary dark:text-accent-gold transition-all inline-flex items-center justify-center">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 font-mono text-sm font-bold text-primary dark:text-slate-300">#TK-49150</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-slate-900 dark:text-slate-200">Payroll Inquiry</span>
+<span class="text-[11px] text-slate-500">Tax deduction query</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700">
+<span class="size-1.5 rounded-full bg-blue-700"></span> Low
+                                    </span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Human Resources</span>
+<span class="text-[11px] text-slate-500">Finance Division</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-bold bg-emerald-100 text-emerald-700">Resolved</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">Oct 18, 2023</td>
+<td class="px-6 py-4 text-center">
+<button class="size-8 rounded-lg hover:bg-primary/5 text-primary dark:text-accent-gold transition-all inline-flex items-center justify-center">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 border-t border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 flex items-center justify-between">
+<p class="text-xs text-slate-500">Showing 4 of 67 recent requests</p>
+<div class="flex items-center gap-2">
+<button class="size-8 rounded border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-400 hover:text-primary transition-all">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="size-8 rounded border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-400 hover:text-primary transition-all">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Helpful Quick Links -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 pb-10">
+<div class="p-4 bg-primary rounded-2xl flex items-center gap-4 text-white">
+<div class="size-12 bg-accent-gold rounded-xl flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">menu_book</span>
+</div>
+<div>
+<h4 class="font-bold text-sm">Knowledge Base</h4>
+<p class="text-xs text-slate-400">Find solutions instantly</p>
+</div>
+</div>
+<div class="p-4 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl flex items-center gap-4">
+<div class="size-12 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center text-primary dark:text-accent-gold">
+<span class="material-symbols-outlined">contact_support</span>
+</div>
+<div>
+<h4 class="font-bold text-sm">IT Support Hotline</h4>
+<p class="text-xs text-slate-500">Call local ext. 4455</p>
+</div>
+</div>
+<div class="p-4 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl flex items-center gap-4">
+<div class="size-12 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center text-primary dark:text-accent-gold">
+<span class="material-symbols-outlined">feedback</span>
+</div>
+<div>
+<h4 class="font-bold text-sm">System Feedback</h4>
+<p class="text-xs text-slate-500">Help us improve AceDesk</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>
